@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:16
-    container_name: postgresql
+    container_name: postgreSQL
     environment:
       POSTGRES_DB: "celosia-db"
       POSTGRES_USER: "postgres"
@@ -14,4 +14,4 @@ services:
 
 volumes:
   pgdata-volume:
-    name: docker_pgdata
+    name: pgdata

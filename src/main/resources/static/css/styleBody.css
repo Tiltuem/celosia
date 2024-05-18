@@ -1,0 +1,44 @@
+.about {
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 100px;
+    color: #000;
+    box-sizing: border-box;
+    min-height: 100%;
+    padding-bottom: 90px;
+    line-height: 1;
+    position: relative;
+    flex: 1 0 auto;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  font-family: Trebuchet MS, sans-serif;
+  height: 100%;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000;
+    margin-bottom: 20px;
+    height: 50px;
+}
