@@ -24,16 +24,6 @@ public class RequestController {
     private final RequestRepository requestRepository;
     private final ProductService productService;
 
-    @PostMapping("/addProduct")
-    public String addProduct(Product product, Model model) {
-        List<Product> basket = productService.getBasket(model);
-        basket.add(product);
-        model.addAttribute("basket", basket);
-
-        return "redirect:/admin/documents/0";
-    }
-
-
     @PostMapping("/admin/getAllRequests")
     public String getAllRequest(@PathVariable int page, Model model) {
         Page<Request> requests = requestRepository.findAll(PageRequest.of(page, PAGE_SIZE, Sort.by("id")));

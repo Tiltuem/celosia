@@ -5,13 +5,15 @@ import org.springframework.boot.Banner;
 import org.springframework.ui.Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductService {
-    public List<Product> getBasket(Model model) {
-        List<Product> basket = (List<Product>) model.getAttribute("basket");
+    public Map<Product, Integer> getBasket(Model model) {
+        Map<Product, Integer> basket = (Map<Product, Integer>) model.getAttribute("basket");
         if (basket == null) {
-            basket = new ArrayList<>();
+            basket = new HashMap();
         }
 
         return basket;
