@@ -1,11 +1,11 @@
 .about {
     justify-content: space-between;
     align-items: center;
-    padding: 80px 100px;
+    padding: 80px 130px;
     color: #000;
     box-sizing: border-box;
     min-height: 100%;
-    padding-bottom: 90px;
+    padding-bottom: 130px;
     line-height: 1;
     position: relative;
     flex: 1 0 auto;
@@ -16,7 +16,6 @@
 }
 html,
 body {
-  font-family: Trebuchet MS, sans-serif;
   height: 100%;
 }
 
@@ -41,4 +40,12 @@ input, textarea, select {
     border: 1px solid #000;
     margin-bottom: 20px;
     height: 50px;
+}
+
+
+.wrapper {
+    font-family: 'Trebuchet MS', 'Verdana', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
 }

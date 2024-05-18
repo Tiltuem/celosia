@@ -19,12 +19,12 @@ public class Request {
     private String username;
     private String phoneNumber;
     private String email;
-    private int guests;
+    private Long guests;
     @Enumerated(EnumType.STRING)
     private EventFormat eventFormat;
-    private int budget;
+    private Long budget;
     private LocalDateTime eventDate;
-    private int hourDuration;
+    private Long hourDuration;
     private String address;
     private boolean withService;
     private String additionalServices;
