@@ -44,8 +44,9 @@ input, textarea, select {
 
 
 .wrapper {
-    font-family: 'Trebuchet MS', 'Verdana', sans-serif;
+    font-family: 'Tips', sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    font-size: 18px;
 }

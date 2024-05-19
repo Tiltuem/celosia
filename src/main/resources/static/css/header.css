@@ -19,7 +19,6 @@ nav a {
     text-align: right;
     font-size:18px;
     font-weight:500;
-    font-family:'BebasNeue';
 }
 
 .follow-us-three {
@@ -38,15 +37,14 @@ nav a {
     width: 100%;
      font-family: Arial, sans-serif;
       background-color: #eee;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
+      box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.1);
  }
 
  .menu a {
- margin: 0 auto;
     text-decoration: none;
     color: #333;
-   margin-bottom: 10px;
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight:bold;
+     padding-left: 80px;
+     padding-right: 80px;
  }
