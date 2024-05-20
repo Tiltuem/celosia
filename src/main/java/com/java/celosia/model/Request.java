@@ -26,9 +26,18 @@ public class Request {
     private LocalDateTime eventDate;
     private Long hourDuration;
     private String address;
-    private boolean withService;
     private String additionalServices;
+    private Long distance;
     @ManyToMany
     private List<Product> products;
     private String comment;
+
+    private Long kitchenPrice;
+    private Long additionalPrice;
+    private Long servicePrice;
+    private Long distancePrice;
+    private Long totalPrice;
+    private String typePayment;
+    private Long profit;
+    private Long costPrice;
 }
