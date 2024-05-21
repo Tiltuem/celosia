@@ -17,6 +17,7 @@
                         <br><br>
                         <form action="/addProduct" method="post">
                             <input type="hidden" value="${product.id}" name="id">
+                            <input type="hidden" value="menu" name="menu">
                             <button type="submit" class="btn btn-outline-dark">
                                 <strong>Добавить</strong>
                             </button>

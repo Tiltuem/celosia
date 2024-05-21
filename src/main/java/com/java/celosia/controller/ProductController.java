@@ -2,22 +2,25 @@ package com.java.celosia.controller;
 
 import com.java.celosia.model.Product;
 import com.java.celosia.repo.ProductRepository;
-import com.java.celosia.service.ProductService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
 public class ProductController {
+    @Autowired
+    private HttpSession session;
     private final ProductRepository productRepository;
-    private final ProductService productService;
 
     @GetMapping("/products")
     public String getMenu(Model model) {
@@ -25,29 +28,52 @@ public class ProductController {
          return "a";
     }
 
+    @GetMapping("/cart")
+    public String getCart() {
+        Map<Product, Integer> basket = (Map<Product, Integer>) session.getAttribute("basket");
+        if (basket == null) {
+            basket = new HashMap<>();
+        }
+        session.setAttribute("basket", basket);
+        return "basket";
+    }
+
     @PostMapping("/addProduct")
-    public String addProduct(@RequestParam Long id, Model model) {
+    public String addToBasket(@RequestParam Long id, @RequestParam String menu) {
         Product product = productRepository.findById(id).get();
-        Map<Product, Integer> basket = productService.getBasket(model);
+
+        Map<Product, Integer> basket = (Map<Product, Integer>) session.getAttribute("basket");
+
+        if (basket == null) {
+            basket = new HashMap<>();
+        }
 
         if (basket.containsKey(product)) {
             basket.put(product, basket.get(product) + 1);
         } else {
             basket.put(product, 1);
         }
-        model.addAttribute("basket", basket);
 
-        return "redirect:/menu";
+        session.setAttribute("basket", basket);
+
+        if (menu.equals("menu")) {
+            return "redirect:/menu";
+        } else if (menu.equals("cart")) {
+            return "redirect:/cart";
+        }
+
+        return "redirect:/catering";
     }
 
+
     @PostMapping("/deleteProduct")
-    public String deleteProduct(@RequestParam Long id, Model model) {
+    public String deleteProduct(@RequestParam Long id) {
         Product product = productRepository.findById(id).get();
+        Map<Product, Integer> basket = (Map<Product, Integer>) session.getAttribute("basket");
 
-        Map<Product, Integer> basket = productService.getBasket(model);
         basket.put(product, basket.get(product) - 1);
-        model.addAttribute("basket", basket);
+        session.setAttribute("basket", basket);
 
-        return "redirect:/menu";
+        return "redirect:/cart";
     }
 }

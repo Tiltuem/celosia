@@ -46,9 +46,13 @@
                             <br><br><br>
                             Количество: ${product.count} Выход: ${product.weight} Стоимость: ${product.price}
                             <br><br>
-                            <button type="submit" class="btn btn-dark" style="text-align: center">
-                                <strong>Добавить в корзину</strong>
-                            </button>
+                            <form action="/addProduct" method="post">
+                                <input type="hidden" value="catering" name="menu">
+                                <input type="hidden" value="${product.id}" name="id">
+                                <button type="submit" class="btn btn-outline-dark">
+                                    <strong>Добавить</strong>
+                                </button>
+                            </form>
                         </div>
                     </#list>
                 </div>

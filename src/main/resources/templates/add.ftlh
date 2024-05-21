@@ -71,7 +71,7 @@
                     <br>
                     <br>
                     <label>Введите дополнительные услуги</label>
-                    <@spring.formInput "request.additionalServices" "required placeholder=\"Дополнительные услуги(аренда мебели, текстиля, посуды, оборудования)\""/>
+                    <@spring.formInput "request.additionalServices" "placeholder=\"Дополнительные услуги(аренда мебели, текстиля, посуды, оборудования)\""/>
                     <br>
                     <br>
                     <div style="font-size: 18px;">*Дополнительные услуги рассчитываются отдельно</div>
@@ -80,7 +80,7 @@
                     <br>
                     <br>
                     <div class="row">
-                        <button type="" class="btn btn-dark" onclick="">
+                        <button onclick="addBasketPrice()" class="btn btn-dark" type="button">
                             Добавить блюда из корзины
                         </button>
                     </div>
@@ -91,9 +91,9 @@
                     <br>
                     <br>
                     <label>Комментарии к заявке</label>
-                    <@spring.formInput "request.comment" "required placeholder=\"Введите комментарий\""/>
+                    <@spring.formInput "request.comment" "placeholder=\"Введите комментарий\""/>
 
-                    <input type="hidden" name="kitchenPrice" id="kitchenPrice">
+                    <input type="hidden" name="kitchenPrice" id="kitchenPrice" value="0">
                     <input type="hidden" name="additionalPrice" id="additionalPrice">
                     <input type="hidden" name="servicePrice" id="servicePrice">
                     <input type="hidden" name="distancePrice" id="distancePrice">
@@ -123,8 +123,7 @@
         const serviceCheckbox = document.getElementById('withService');
         const distanceInput = document.getElementById('distance');
 
-        //const kitchenPrice = document.getElementById('kitchenPrice'); Сумма по корзине
-        //const additionalPrice = document.getElementById('additionalPrice'); Сумма по допуслугам
+        const kitchenPrice = document.getElementById('kitchenPrice');
         const servicePrice = document.getElementById('servicePrice');
         const distancePrice = document.getElementById('distancePrice');
         const totalPrice = document.getElementById('totalPrice');
@@ -134,9 +133,10 @@
         function calculateCost() {
             const duration = parseInt(durationInput.value);
             const guests = parseInt(guestsInput.value);
-            const needCook = needCookCheckbox.value ;
-            const service = serviceCheckbox.value ;
+            const needCook = needCookCheckbox.value;
+            const service = serviceCheckbox.value;
             const distance = parseInt(distanceInput.value);
+            const kitchen = parseInt(kitchenPrice.value);
             let waitersByGuests = Math.ceil(guests / 10);
             let waitersByDuration = Math.ceil(duration / 3);
             const requiredWaiters = Math.max(waitersByGuests, waitersByDuration);
@@ -146,12 +146,21 @@
             const serviceCost = requiredWaiters * 2000 * service;
             const deliveryCost = 1000 + (2000 * Math.ceil((distance - 10) / 10));
 
-            totalPrice.value  =  managerCost + cookCost + serviceCost + deliveryCost; //добавить еще цену корзины
-            distancePrice.value  =  deliveryCost;
+            totalPrice.value = managerCost + cookCost + serviceCost + deliveryCost + kitchen;
+            distancePrice.value = deliveryCost;
             servicePrice.value = cookCost + serviceCost + managerCost;
             totalCostLabel.value = totalPrice.value;
         }
 
+
         form.addEventListener('input', calculateCost);
+    </script>
+    <script>
+        const kitchenPrice2 = document.getElementById('kitchenPrice');
+        let kitchen2 = parseInt(${kitchenPrice});
+        function addBasketPrice() {
+            kitchenPrice2.value = kitchen2;
+            calculateCost();
+        }
     </script>
 </@common.page>

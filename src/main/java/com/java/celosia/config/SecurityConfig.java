@@ -34,9 +34,9 @@ public class SecurityConfig {
                 .cors().disable()
                 .authorizeHttpRequests(
                         request -> request
-                                .requestMatchers("/", "/catering", "/request/new", "/css/**", "/webjars/**", "/request/add", "/products","/addProduct", "/deleteProduct", "/menu")
+                                .requestMatchers("/", "/catering", "/request/new", "/css/**", "/webjars/**", "/request/add", "/products","/addProduct", "/deleteProduct", "/menu", "/cart")
                                 .permitAll()
-                                .anyRequest().authenticated()
+                                .anyRequest().permitAll()
                 )
                 .httpBasic(Customizer.withDefaults())
                 .formLogin()

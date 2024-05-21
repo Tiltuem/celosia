@@ -23,8 +23,8 @@
                     <span>
                     <img src="../../css/image/people.png">
                     <img src="../../css/image/sms.png">
-                    <img src="../../css/image/basket.png">
-                        </span>
+                    <a href="/cart"><img src="../../css/image/basket.png"></a>
+                    </span>
                 </div>
             </div>
             <div class="menu" style="background-color: #ebebed;">
@@ -44,19 +44,7 @@
             crossorigin="anonymous">
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(".form__input").click(function () {
-            if (($(this).prop("checked"))) {
-                $("#form__button").removeAttr("disabled");
-            } else {
-                $("#form__button").attr("disabled", "disabled");
-            }
-        })
-        $('.input-file input[type=file]').on('change', function () {
-            let file = this.files[0];
-            $(this).next().html(file.name);
-        });
-    </script>
+
     </body>
     </html>
 </#macro>
