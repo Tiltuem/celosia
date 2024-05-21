@@ -98,10 +98,12 @@
                     <input type="hidden" name="servicePrice" id="servicePrice">
                     <input type="hidden" name="distancePrice" id="distancePrice">
                     <input type="hidden" name="totalPrice" id="totalPrice">
+                    <input type="hidden" name="completed" value="false">
                     <br>
                     <br>
                     <label>Примерная стоимость</label>
-                    <@spring.formInput "request.totalPrice" "disabled"/>
+                    <input type="number" id="totalCostLabel" disabled>
+                    <input type="hidden" name="totalPrice" id="totalPrice">
                     <br>
                     <br>
                     <div style="text-align: center">
@@ -126,6 +128,7 @@
         const servicePrice = document.getElementById('servicePrice');
         const distancePrice = document.getElementById('distancePrice');
         const totalPrice = document.getElementById('totalPrice');
+        const totalCostLabel = document.getElementById('totalCostLabel');
 
 
         function calculateCost() {
@@ -146,6 +149,7 @@
             totalPrice.value  =  managerCost + cookCost + serviceCost + deliveryCost; //добавить еще цену корзины
             distancePrice.value  =  deliveryCost;
             servicePrice.value = cookCost + serviceCost + managerCost;
+            totalCostLabel.value = totalPrice.value;
         }
 
         form.addEventListener('input', calculateCost);

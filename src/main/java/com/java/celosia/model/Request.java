@@ -40,4 +40,5 @@ public class Request {
     private String typePayment;
     private Long profit;
     private Long costPrice;
+    private boolean completed;
 }

@@ -75,7 +75,7 @@ values ('Шашлык из курицы', 170, 359, 70, 1)
 ON CONFLICT DO NOTHING;
 
 insert into product ("name",weight, price, cost_price, count)
-values ('Шашлык из индейки', 170, 459, 75, 1);
+values ('Шашлык из индейки', 170, 459, 75, 1)
 ON CONFLICT DO NOTHING;
 
 insert into product ("name",weight, price, cost_price, count)

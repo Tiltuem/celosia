@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Map;
 
@@ -24,7 +26,8 @@ public class ProductController {
     }
 
     @PostMapping("/addProduct")
-    public String addProduct(Product product, Model model) {
+    public String addProduct(@RequestParam Long id, Model model) {
+        Product product = productRepository.findById(id).get();
         Map<Product, Integer> basket = productService.getBasket(model);
 
         if (basket.containsKey(product)) {
@@ -34,15 +37,17 @@ public class ProductController {
         }
         model.addAttribute("basket", basket);
 
-        return "redirect:/admin/documents/0";
+        return "redirect:/menu";
     }
 
     @PostMapping("/deleteProduct")
-    public String deleteProduct(Product product, Model model) {
+    public String deleteProduct(@RequestParam Long id, Model model) {
+        Product product = productRepository.findById(id).get();
+
         Map<Product, Integer> basket = productService.getBasket(model);
         basket.put(product, basket.get(product) - 1);
         model.addAttribute("basket", basket);
 
-        return "redirect:/admin/documents/0";
+        return "redirect:/menu";
     }
 }

@@ -2,14 +2,13 @@
     <html xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="UTF-8"/>
-        <title>FLY PRODUCTION</title>
+        <title>CELOSIA</title>
         <link rel="stylesheet"
               href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
         <link rel="stylesheet"
               href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
         <link rel="stylesheet" href="../../css/styleBody.css">
         <link rel="stylesheet" href="../../css/styleButton.css">
-        <link rel="stylesheet" href="../../css/footer.css">
         <link rel="stylesheet" href="../../css/header.css">
     </head>
     <body>
@@ -30,10 +29,10 @@
             </div>
             <div class="menu" style="background-color: #ebebed;">
                 <a href="#">Главная</a>
-                <a href="#">Меню</a>
+                <a href="/menu">Меню</a>
                 <a href="#">Акции</a>
                 <a href="#">О нас</a>
-                <a href="#">Кейтеринг</a>
+                <a href="/catering">Кейтеринг</a>
                 <a href="#">Контакты</a>
             </div>
         </header>

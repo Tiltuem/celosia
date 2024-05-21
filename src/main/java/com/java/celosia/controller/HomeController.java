@@ -13,12 +13,24 @@ public class HomeController {
 
     @GetMapping("/")
     public String homePage() {
-        return "home";
+        return "redirect:/catering";
     }
 
     @GetMapping("/catering")
     public String cateringPage(Model model) {
         model.addAttribute("products", productRepository.findAll().stream().limit(4));
         return "catering";
+    }
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
+
+
+    @GetMapping("/menu")
+    public String getMenu(Model model) {
+        model.addAttribute("products", productRepository.findAll());
+        return "menu";
     }
 }

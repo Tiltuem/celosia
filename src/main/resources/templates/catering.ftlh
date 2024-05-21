@@ -54,7 +54,7 @@
                 </div>
                 <br><br><br>
                 <div class="row">
-                    <a href="" class="btn btn-dark">
+                    <a href="/menu" class="btn btn-dark">
                         <strong>Всё меню</strong>
                     </a>
                 </div>
