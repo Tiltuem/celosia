@@ -12,8 +12,18 @@
                     <br>
                     <form action="/admin/request/save" method="post" enctype="multipart/form-data">
                         <input type="hidden" value="${request.id}" name="id">
-                        <label>Сумма по кухне</label>
-                        <input disabled value="${request.kitchenPrice}">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label>Сумма по кухне</label>
+                                <input disabled value="${request.kitchenPrice}">
+                            </div>
+                            <div class="col-md-4">
+                                <label>Список блюд</label>
+                                <div class="row">
+                                    <a href="/admin/request/products?id=${request.id}" class="btn btn-outline-dark">Перейти</a>
+                                </div>
+                            </div>
+                        </div>
                         <br>
                         <br>
                         <label>Обслуживание</label>
@@ -38,8 +48,23 @@
                             <option value="Наличные">Наличные</option>
                             <option value="Перевод">Перевод</option>
                         </select>
-                        <label>Введите стоимость доп. услуг</label>
-                        <input type="number" name="additionalPrice">
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Стоимость доп. услуг</label>
+                                <input value="${request.additionalPrice}" disabled>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Редактировать стоимость доп. услуг</label>
+                                <input type="number" name="additionalPrice">
+                            </div>
+                        </div>
+                        <br>
+                        <label>Общая стоимость</label>
+                        <input value="${request.totalPrice}" disabled>
+                        <br>
+                        <br>
                         <label>Выполнено</label>
                         <select name="completed" required>
                             <option value="true">Да</option>

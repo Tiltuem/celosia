@@ -34,13 +34,23 @@ public class RequestController {
     @PostMapping("/request/save")
     public String changeRequest(@RequestParam Long id, @RequestParam Long additionalPrice, @RequestParam boolean completed, @RequestParam String typePayment) {
         Request request = requestRepository.findById(id).get();
+        Long oldPrice = request.getTotalPrice();
+        Long oldAddPrice = request.getAdditionalPrice();
 
+        request.setTotalPrice(oldPrice + additionalPrice - oldAddPrice);
         request.setAdditionalPrice(additionalPrice);
         request.setCompleted(completed);
         request.setTypePayment(typePayment);
 
         requestRepository.save(request);
         return "redirect:/admin/requests";
+    }
+
+    @GetMapping("/request/products")
+    public String getProducts(@RequestParam Long id, Model model) {
+        model.addAttribute("products", requestRepository.findById(id).get().getProducts());
+
+        return "productsRequest";
     }
 }
 

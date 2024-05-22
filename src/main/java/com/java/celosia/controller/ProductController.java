@@ -15,18 +15,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+import static com.java.celosia.util.BasketUtil.getBasketPrice;
+
 @Controller
 @RequiredArgsConstructor
 public class ProductController {
     @Autowired
     private HttpSession session;
     private final ProductRepository productRepository;
-
-    @GetMapping("/products")
-    public String getMenu(Model model) {
-         model.addAttribute("products", productRepository.findAll());
-         return "a";
-    }
 
     @GetMapping("/cart")
     public String getCart() {
@@ -53,7 +49,7 @@ public class ProductController {
         } else {
             basket.put(product, 1);
         }
-
+        session.setAttribute("basketPrice", getBasketPrice(basket).get(0));
         session.setAttribute("basket", basket);
 
         if (menu.equals("menu")) {
@@ -73,6 +69,7 @@ public class ProductController {
 
         basket.put(product, basket.get(product) - 1);
         session.setAttribute("basket", basket);
+        session.setAttribute("basketPrice", getBasketPrice(basket).get(0));
 
         return "redirect:/cart";
     }
