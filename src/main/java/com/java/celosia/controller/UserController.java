@@ -53,6 +53,7 @@ public class UserController {
         }
         request.setAdditionalPrice(0L);
         request.setEventFormat(EventFormat.valueOf(format));
+        request.setCompleted(false);
 
 
         requestRepository.save(request);

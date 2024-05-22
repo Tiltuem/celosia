@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
@@ -36,10 +37,14 @@ public class RequestController {
     }
 
     @PostMapping("/request/save")
-    public String changeRequest(@RequestParam Long id, @RequestParam Long additionalPrice, @RequestParam boolean completed, @RequestParam String typePayment) {
+    public String changeRequest(@RequestParam Long id, @RequestParam(required = false) Long additionalPrice, @RequestParam boolean completed, @RequestParam String typePayment) {
         Request request = requestRepository.findById(id).get();
         Long oldPrice = request.getTotalPrice();
         Long oldAddPrice = request.getAdditionalPrice();
+
+        if (Objects.isNull(additionalPrice)) {
+            additionalPrice = oldAddPrice;
+        }
 
         request.setTotalPrice(oldPrice + additionalPrice - oldAddPrice);
         request.setAdditionalPrice(additionalPrice);
