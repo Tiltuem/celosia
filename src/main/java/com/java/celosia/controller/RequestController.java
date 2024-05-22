@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -18,6 +20,8 @@ public class RequestController {
     @GetMapping("/requests")
     public String getAllRequest(Model model) {
         List<Request> requests = requestRepository.findAll();
+        requests.sort(Comparator.comparing(Request::getId));
+
         model.addAttribute("requests", requests);
 
         return "requests";
@@ -51,6 +55,13 @@ public class RequestController {
         model.addAttribute("products", requestRepository.findById(id).get().getProducts());
 
         return "productsRequest";
+    }
+
+    @PostMapping("/request/delete/{id}")
+    public String deleteRequest(@PathVariable Long id) {
+        requestRepository.deleteById(id);
+
+        return "redirect:/admin/requests";
     }
 }
 

@@ -42,12 +42,18 @@ public class UserController {
     @PostMapping("/add")
     public String saveRequest(Request request, String format) {
         Map<Product, Integer> basket = (Map<Product, Integer>) session.getAttribute("basket");
-
-        List<Long> value = getBasketPrice(basket);
+        if (Objects.nonNull(basket)) {
+            List<Long> value = getBasketPrice(basket);
+            request.setCostPrice(value.get(1));
+            request.setProfit(value.get(0) - value.get(1));
+            request.setProducts(basket.keySet().stream().toList());
+        } else {
+            request.setCostPrice(0L);
+            request.setProfit(0L);
+        }
+        request.setAdditionalPrice(0L);
         request.setEventFormat(EventFormat.valueOf(format));
-        request.setCostPrice(value.get(1));
-        request.setProfit(value.get(0) - value.get(1));
-        request.setProducts(basket.keySet().stream().toList());
+
 
         requestRepository.save(request);
 
