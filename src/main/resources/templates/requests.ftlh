@@ -24,6 +24,7 @@
                                 <th>Дистанция от центра города</th>
                                 <th>Комментарий</th>
                                 <th>Стоимость</th>
+                                <th>Удаление</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -48,6 +49,14 @@
                                     <td>${request.distance}</td>
                                     <td>${request.comment}</td>
                                     <td><a href="/admin/request/${request.id}" class="btn btn-outline-dark">Редактировать</a></td>
+                                    <td>
+                                        <form action="/admin/request/delete/${request.id}"
+                                              method="post">
+                                            <button type="submit" class="btn btn-outline-dark">
+                                                Удалить
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                             </#list>
                             </tbody>
