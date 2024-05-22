@@ -11,7 +11,7 @@
                 <div class="col-md 4">
                     <div class="row">
                         <div class="col-md-3">
-                            <img src="../css/image/${product.name}.png" height="187" width="247">
+                            <img src="../css/image/${product.name}.png" height="230" width="300">
                         </div>
                         <div class="col-md-4"><strong><i>${product.name}</i></strong>
                             <br><br>
@@ -19,7 +19,6 @@
                             <br><br>
                             Цена за шт: ${product.price}
                             <br><br>
-                            <div class="row">
                                 <div class="col-md-3">
                                     <form action="/addProduct" method="post">
                                         <input type="hidden" value="cart" name="menu">
@@ -29,6 +28,7 @@
                                         </button>
                                     </form>
                                 </div>
+                            <br>
                                 <div class="col-md-3">
                                     <form action="/deleteProduct" method="post">
                                         <input type="hidden" value="${product.id}" name="id">
@@ -37,7 +37,6 @@
                                         </button>
                                     </form>
                                 </div>
-                            </div>
                         </div>
                     </div>
                     <br><br>
