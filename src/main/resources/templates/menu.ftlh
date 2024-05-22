@@ -11,7 +11,7 @@
                     <div class="col-md-3" style="text-align: center">
                         <img src="../css/image/${product.name}.png" height="187" width="247">
                         <br><br>
-                        <strong>${product.name}</strong>
+                        <strong><i>${product.name}</i></strong>
                         <br><br>
                         Количество: ${product.count} Вес: ${product.weight}<br>Стоимость: ${product.price}
                         <br><br>

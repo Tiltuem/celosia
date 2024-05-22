@@ -57,9 +57,15 @@
                     </#list>
                 </div>
                 <br><br><br>
-                <div class="row">
+                <div class="row" style="text-align: center">
                     <a href="/menu" class="btn btn-dark">
                         <strong>Всё меню</strong>
+                    </a>
+                </div>
+                <br>
+                <div class="row">
+                    <a href="/request/new" class="btn btn-dark">
+                        <strong>Перейти к оформлению</strong>
                     </a>
                 </div>
             </div>
