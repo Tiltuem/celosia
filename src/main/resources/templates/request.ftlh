@@ -7,7 +7,7 @@
         <div class="container">
             <div class="col-md-12">
                 <div class="row">
-                    <h1 style="text-align: center;"><strong>Стоимость</strong>
+                    <h1 style="text-align: center;"><strong>Редактирование заявки</strong>
                     </h1>
                     <br>
                     <form action="/admin/request/save" method="post" enctype="multipart/form-data">
