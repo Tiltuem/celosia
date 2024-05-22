@@ -66,8 +66,12 @@ public class ProductController {
     public String deleteProduct(@RequestParam Long id) {
         Product product = productRepository.findById(id).get();
         Map<Product, Integer> basket = (Map<Product, Integer>) session.getAttribute("basket");
+        if(basket.get(product) - 1 <= 0) {
+            basket.remove(product);
+        } else {
+            basket.put(product, basket.get(product) - 1);
+        }
 
-        basket.put(product, basket.get(product) - 1);
         session.setAttribute("basket", basket);
         session.setAttribute("basketPrice", getBasketPrice(basket).get(0));
 
