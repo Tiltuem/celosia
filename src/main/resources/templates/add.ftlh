@@ -16,7 +16,7 @@
                     <br>
                     <br>
                     <label>Номер телефона</label>
-                    <@spring.formInput "request.phoneNumber" "pattern=\"+7-[0-9]{3}-[0-9]{2}-[0-9]{3}\"required placeholder=\"Введите Ваш номер телефона\""/>
+                    <@spring.formInput "request.phoneNumber" "pattern=\"^(\\+7)([0-9]{10})$\" required placeholder=\"Введите Ваш номер телефона\" title=\"Введите номер в формате '+71234567890'\""/>
                     <br>
                     <br>
                     <label>Email</label>
@@ -24,7 +24,7 @@
                     <br>
                     <br>
                     <label>Количество гостей</label>
-                    <@spring.formInput "request.guests" "required placeholder=\"Введите количество гостей\""/>
+                    <@spring.formInput "request.guests" "required placeholder=\"Введите количество гостей\" pattern=\"^\\d+$\" title=\"Введите число\""/>
                     <br>
                     <br>
                     <label>Формат мероприятия</label>
@@ -39,7 +39,7 @@
                     <br>
                     <br>
                     <label>Бюджет</label>
-                    <@spring.formInput "request.budget" "required placeholder=\"Введите бюджет\""/>
+                    <@spring.formInput "request.budget" "required placeholder=\"Введите бюджет\" pattern=\"^\\d+$\" title=\"Введите число\""/>
                     <br>
                     <br>
                     <label>Дата и время мероприятия</label>
@@ -47,7 +47,7 @@
                     <br>
                     <br>
                     <label>Длительность мероприятия</label>
-                    <@spring.formInput "request.hourDuration" "required placeholder=\"Укажите длительность мероприятия\""/>
+                    <@spring.formInput "request.hourDuration" "required placeholder=\"Укажите длительность мероприятия\" pattern=\"^\\d+$\" title=\"Введите число\""/>
                     <br>
                     <br>
                     <label>Адрес проведения мероприятия</label>
@@ -60,7 +60,7 @@
                     <br>
                     <br>
                     <label>Расстояние от центра города в км</label>
-                    <@spring.formInput "request.distance" "required placeholder=\"Введите расстояние от центра города\""/>
+                    <@spring.formInput "request.distance" "required placeholder=\"Введите расстояние от центра города\" pattern=\"^\\d+$\" title=\"Введите число\""/>
                     <br>
                     <br>
                     <label>Повар</label>

@@ -41,7 +41,10 @@ input, textarea, select {
     margin-bottom: 20px;
     height: 50px;
 }
+input:invalid {
 
+    display: block;
+}
 
 .wrapper {
     font-family: 'Tips', sans-serif;
