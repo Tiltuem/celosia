@@ -10,7 +10,7 @@
                 <#list basket as product, count>
                 <div class="col-md 4">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <img src="../css/image/${product.name}.png" height="230" width="300">
                         </div>
                         <div class="col-md-4"><strong><i>${product.name}</i></strong>
