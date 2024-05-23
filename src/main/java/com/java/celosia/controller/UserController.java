@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
@@ -29,9 +30,13 @@ public class UserController {
     private final RequestRepository requestRepository;
 
     @GetMapping("/new")
-    public String newRequest(Model model) {
+    public String newRequest(@RequestParam(required = false) Boolean successfully, Model model) {
         Map<Product, Integer> basket = (Map<Product, Integer>) session.getAttribute("basket");
-
+        if (Objects.nonNull(successfully)) {
+            model.addAttribute("successfully", true);
+        } else {
+            model.addAttribute("successfully", false);
+        }
 
         model.addAttribute("request", new Request());
         model.addAttribute("kitchenPrice", String.valueOf(getBasketPrice(basket).get(0)));
@@ -58,6 +63,6 @@ public class UserController {
 
         requestRepository.save(request);
 
-        return "redirect:/request/new";
+        return "redirect:/request/new?successfully=true";
     }
 }

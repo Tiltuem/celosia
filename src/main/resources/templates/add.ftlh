@@ -43,7 +43,7 @@
                     <br>
                     <br>
                     <label>Дата и время мероприятия</label>
-                    <input type="datetime-local" name="eventDate">
+                    <input type="datetime-local" name="eventDate" required>
                     <br>
                     <br>
                     <label>Длительность мероприятия</label>
@@ -114,6 +114,32 @@
                 </form>
             </div>
         </div>
+        <div id="modal" class="modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered" data-bs-config={backdrop:true}>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Создание заявки на обслуживание</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <i>Заявка успешно отправлена!</i>
+                    </div>
+                    <div class="modal-footer">
+                        <div  style="text-align: center;">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Закрыть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function showModal() {
+                myvariable = ${successfully?c};
+                if (myvariable === true) {
+                    $('#modal').modal('show')
+                }
+            }
+        </script>
     </section>
     <script>
         const form = document.querySelector('form');
